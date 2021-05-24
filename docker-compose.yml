@@ -65,7 +65,18 @@ services:
       - keycloak-auth # This service depends on mysql. Start that first.
     networks: # Networks to join (Services on the same network can communicate with each other using their name)
       - frontend
-
+  # App frontend service
+  cypress-test:
+    # Configuration for building the docker image for the backend service
+    build:
+      context: test # Use an image built from the specified dockerfile in the `polling-app-server` directory.
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      - app-server
+      - app-client-next
+    networks: # Networks to join (Services on the same network can communicate with each other using their name)
+      - frontend
 # Volumes
 volumes:
   db-data:
@@ -74,3 +85,4 @@ volumes:
 networks:
   backend:
   frontend:    
+
