@@ -30,8 +30,6 @@ jobs:
         run: docker-compose up -d
       - name: npm dependency fix
         run: npm i
-        with:
-          working-directory: frontend
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
