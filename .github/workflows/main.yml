@@ -33,3 +33,4 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           working-directory: frontend
+          run: npm i
